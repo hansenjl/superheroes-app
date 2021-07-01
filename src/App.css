@@ -2,15 +2,17 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+
+.card {
+  height: 65vmin;
+  width: 50vmin;
+  background-color: lightslategrey;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+img {
+  height: 35vmin;
+  width: 35vmin;
+  object-fit: cover;
 }
 
 .App-header {
