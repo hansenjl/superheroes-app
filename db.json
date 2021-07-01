@@ -3,25 +3,25 @@
     {
       "id": 1,
       "name": "Superman",
-      "likes": 0,
+      "likes": 4,
       "image": "https://images.unsplash.com/photo-1590341328520-63256eb32bc3?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8c3VwZXIlMjBtYW58ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60"
     },
     {
       "id": 2,
       "name": "Batman",
-      "likes": 0,
+      "likes": 4,
       "image": "https://images.unsplash.com/photo-1531259683007-016a7b628fc3?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8c3VwZXJoZXJvfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60"
     },
     {
       "id": 3,
       "name": "Superwoman",
-      "likes": 0,
+      "likes": 2,
       "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZsCmgQf67GHLitZguzK4z2Mt_CEnEZSdU_Q&usqp=CAU"
     },
     {
       "id": 4,
       "name": "Black Panther",
-      "likes": 0,
+      "likes": 5,
       "image": "https://upload.wikimedia.org/wikipedia/en/9/9f/Black_Panther_OS_Vol_1_2.png"
     },
     {
@@ -75,6 +75,12 @@
       "name": "spiderman",
       "likes": 0,
       "id": 12
+    },
+    {
+      "name": "",
+      "image": "",
+      "likes": 0,
+      "id": 13
     }
   ]
 }

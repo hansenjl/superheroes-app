@@ -1,15 +1,29 @@
 import {useState, useEffect} from 'react'
+import {useParams} from 'react-router-dom'
 
-function HeroForm({addNewHero}){
+function HeroForm({addNewHero, heroes}){
     const defaultFormData = {
         name: "",
-        image: ""
+        image: "",
+        likes: 0
     }
     const [formData, setFormData] = useState(defaultFormData)
 
-    useEffect(() => {
+    const params = useParams()
+    console.log(params)
 
-    }, [])
+    
+
+    useEffect(() => {
+        if(params.id && heroes.length > 0){
+            //find the hero
+            const heroWeWantToEdit = heroes.find(hero => hero.id === parseInt(params.id))
+            console.log(heroWeWantToEdit)
+            setFormData(heroWeWantToEdit)
+        }else {
+            setFormData(defaultFormData)
+        }
+    }, [params, heroes])
 
     function handleSubmit(e){
         e.preventDefault()
@@ -47,7 +61,7 @@ function HeroForm({addNewHero}){
                 <label>Image:</label>
                 <input type="text" name="image" value={formData.image} onChange={handleChange} />
                </div>
-                <input type="submit" value="Create"/>
+                <input type="submit" value={formData.id ? "Update" : "Create"}/>
            </form>
         </div>
     )
