@@ -1,33 +1,45 @@
 import {useState, useEffect} from 'react'
+import {useParams, useHistory} from 'react-router-dom'
 
-function HeroForm({addNewHero}){
+function HeroForm({updateHeroes, heroes}){
     const defaultFormData = {
         name: "",
-        image: ""
+        image: "",
+        likes: 0
     }
     const [formData, setFormData] = useState(defaultFormData)
+    const heroId = useParams().id
+    const history = useHistory()
+
 
     useEffect(() => {
-
-    }, [])
+        if(heroes){
+            const heroToEdit = heroes.find(h => h.id === parseInt(heroId))
+            if(heroToEdit){
+                setFormData(heroToEdit)
+            }
+        }   
+    }, [heroId, heroes])
 
     function handleSubmit(e){
         e.preventDefault()
 
-        const newHero = {...formData, likes: 0}
+        const method = formData.id ? "PATCH" : "POST"
+        const url = formData.id ? `http://localhost:3004/superheroes/${formData.id}` :  'http://localhost:3004/superheroes' 
 
         const configObj = {
-            method: "POST",
+            method: method,
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify(newHero)
+            body: JSON.stringify(formData)
         }
-        fetch('http://localhost:3004/superheroes', configObj)
+        fetch(url, configObj)
         .then(r => r.json())
         .then(data => {
-            addNewHero(data)
+            updateHeroes(data)
             setFormData(defaultFormData)
+            history.push('/heroes')
         })
     }
 
@@ -47,7 +59,7 @@ function HeroForm({addNewHero}){
                 <label>Image:</label>
                 <input type="text" name="image" value={formData.image} onChange={handleChange} />
                </div>
-                <input type="submit" value="Create"/>
+                <input type="submit" value={formData.id ? "Update" : "Create"}/>
            </form>
         </div>
     )
